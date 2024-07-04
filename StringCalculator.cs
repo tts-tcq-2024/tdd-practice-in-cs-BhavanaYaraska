@@ -2,7 +2,7 @@ using System;
 
 public class StringCalculator
 {
-  public void Add(string input)
+  public int Add(string input)
   {
     return 0;
   }
