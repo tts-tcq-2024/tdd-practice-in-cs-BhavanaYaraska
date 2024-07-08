@@ -52,9 +52,9 @@ public class StringCalculatorAddTests
     {
         int expectedResult = 6;
         string input = "1\n2,3";
-       .// StringCalculator objUnderTest = new StringCalculator();
+       .//StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
-       Assert.Equal(expectedResult, result);
+        Assert.Equal(expectedResult, result);
     }
 
   [Fact]
