@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-public class StringCalculator
+public static class StringCalculator
 {
-    public  int Add(string numbers)
+    public static int Add(string numbers)
     {
         if (string.IsNullOrEmpty(numbers))
             return 0;
@@ -19,7 +19,7 @@ public class StringCalculator
         return parsedNumbers.Sum();
     }
 
-    private  string[] GetDelimiters(string numbers, out string trimmedNumbers)
+    private  static string[] GetDelimiters(string numbers, out string trimmedNumbers)
     {
         string[] defaultDelimiters = { ",", "\n" };
         trimmedNumbers = numbers;
@@ -35,12 +35,12 @@ public class StringCalculator
         return defaultDelimiters;
     }
 
-    private  string[] SplitNumbers(string numbers, string[] delimiters)
+    private   static string[] SplitNumbers(string numbers, string[] delimiters)
     {
         return Regex.Split(numbers, string.Join("|", delimiters));
     }
 
-    private  List<int> ParseNumbers(string[] numberStrings)
+    private static List<int> ParseNumbers(string[] numberStrings)
     {
         List<int> parsedNumbers = new List<int>();
 
@@ -57,7 +57,7 @@ public class StringCalculator
         return parsedNumbers;
     }
 
-    private  void ValidateNumber(int num)
+    private static void ValidateNumber(int num)
     {
         if (num < 0)
         {
