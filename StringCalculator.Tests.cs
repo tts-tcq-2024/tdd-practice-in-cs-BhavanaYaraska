@@ -72,7 +72,7 @@ public class StringCalculatorAddTests
     {
         int expectedResult = 3;
         string input = "//;\n1;2";
-       // StringCalculator objUnderTest = new StringCalculator();
+       //StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
        Assert.Equal(expectedResult, result);
     }
