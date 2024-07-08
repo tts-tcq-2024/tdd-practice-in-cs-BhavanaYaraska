@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-using StringCalculator;
+using static StringCalculator;
 
 
 public class StringCalculatorAddTests
