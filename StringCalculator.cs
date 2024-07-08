@@ -52,8 +52,8 @@ public static class StringCalculator
                 ValidateNumber(num);
                 parsedNumbers.Add(num);
             }
-            
         }
+        
 
         return parsedNumbers;
     }
