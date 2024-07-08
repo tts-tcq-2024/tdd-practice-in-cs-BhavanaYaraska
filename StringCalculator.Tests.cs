@@ -54,7 +54,6 @@ public class StringCalculatorAddTests
         string input = "1\n2,3";
        .// StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
-
        Assert.Equal(expectedResult, result);
     }
 
@@ -65,7 +64,6 @@ public class StringCalculatorAddTests
         string input = "1,1001";
         //StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
-
        Assert.Equal(expectedResult, result);
     }
 
@@ -76,7 +74,6 @@ public class StringCalculatorAddTests
         string input = "//;\n1;2";
        // StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
-
        Assert.Equal(expectedResult, result);
     }
 }
