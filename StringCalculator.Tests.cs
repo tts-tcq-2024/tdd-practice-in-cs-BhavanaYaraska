@@ -11,7 +11,7 @@ public class StringCalculatorAddTests
         int expectedResult = 0;
         string input = "";
         StringCalculator objUnderTest = new StringCalculator();
-        int result = StringCalculator.Add(input);
+        int result = objUnderTest.Add(input);
 
        Assert.Equal(expectedResult, result);
     }
@@ -22,7 +22,7 @@ public class StringCalculatorAddTests
         int expectedResult = 0;
         string input = "0";
         StringCalculator objUnderTest = new StringCalculator();
-        int result = StringCalculator.Add(input);
+        int result = objUnderTest.Add(input);
 
         Assert.Equal(expectedResult, result);
     }
