@@ -13,8 +13,7 @@ public class StringCalculatorAddTests
         string input = "";
         //StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
-
-       Assert.Equal(expectedResult, result);
+        Assert.Equal(expectedResult, result);
     }
 
   [Fact]
@@ -24,7 +23,6 @@ public class StringCalculatorAddTests
         string input = "0";
         //StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
-
         Assert.Equal(expectedResult, result);
     }
 
@@ -33,7 +31,7 @@ public class StringCalculatorAddTests
     {
         int expectedResult = 3;
         string input = "1,2";
-     //  StringCalculator objUnderTest = new StringCalculator();
+     //StringCalculator objUnderTest = new StringCalculator();
         int result = StringCalculator.Add(input);
        Assert.Equal(expectedResult, result);
     }
