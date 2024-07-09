@@ -13,10 +13,10 @@ public class StringCalculatorAddTests
     }
 
     [Fact]
-    public void ExpectZeroForSingleZero()
+    public void ExpectOneForSingleOne()
     {
-        int expectedResult = 0;
-        string input = "0";
+        int expectedResult = 1;
+        string input = "1";
         int result = StringCalculator.Add(input);
         Assert.Equal(expectedResult, result);
     }
@@ -33,11 +33,13 @@ public class StringCalculatorAddTests
     [Fact]
     public void ExpectExceptionForNegativeNumbers()
     {
-        Assert.Throws<Exception>(() =>
-        {
-            string input = "-1,2";
-            StringCalculator.Add(input);
-        });
+       var exception = Assert.Throws<ArgumentException>(() =>
+    {
+        string input = "-1,2";
+        StringCalculator.Add(input);
+    });
+
+    Assert.Contains("negatives not allowed: -1", exception.Message);
     }
 
     [Fact]
