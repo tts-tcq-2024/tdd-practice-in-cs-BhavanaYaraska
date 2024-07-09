@@ -70,7 +70,11 @@ public static class StringCalculator
             if (!string.IsNullOrEmpty(numStr))
             {
                 num = int.Parse(numStr);
+                if(num<0){
                 ValidateNumber(num);
+                }else if(num>1000){
+                    num=0;
+                }
                 parsedNumbers.Add(num);
             }
         }
@@ -78,13 +82,13 @@ public static class StringCalculator
         return parsedNumbers;
     }
 
-    private static void ValidateNumber(int num1,out int num)
+    private static void ValidateNumber(int num)
     {
-        if (num1 < 0)
+        if (num < 0)
         {
             throw new ArgumentException($"negatives not allowed: {num1}");
         }
-        else if (num1 > 1000)
+        else if (num > 1000)
         {
              num = 0;
             // Numbers greater than 1000 are ignored
