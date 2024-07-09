@@ -10,16 +10,16 @@ public static class StringCalculator
         if (string.IsNullOrEmpty(numbers))
             return 0;
 
-        string[] delimiters = GetDelimiters(numbers, out numbers);
+        string[] delimiters = GetDelimiters(numbers, out string trimmedNumbers);
 
-        string[] numberStrings = SplitNumbers(numbers, delimiters);
+        string[] numberStrings = SplitNumbers(trimmedNumbers, delimiters);
 
         List<int> parsedNumbers = ParseNumbers(numberStrings);
 
         return parsedNumbers.Sum();
     }
 
-    private  static string[] GetDelimiters(string numbers, out string trimmedNumbers)
+    public static string[] GetDelimiters(string numbers, out string trimmedNumbers)
     {
         string[] defaultDelimiters = { ",", "\n" };
         trimmedNumbers = numbers;
@@ -27,20 +27,41 @@ public static class StringCalculator
         if (numbers.StartsWith("//"))
         {
             int delimiterIndex = numbers.IndexOf('\n');
-            string customDelimiter = numbers.Substring(2, delimiterIndex - 2);
+            string customDelimiterString = numbers.Substring(2, delimiterIndex - 2);
+            List<string> customDelimiters = ExtractCustomDelimiters(customDelimiterString);
             trimmedNumbers = numbers.Substring(delimiterIndex + 1);
-            return new string[] { customDelimiter };
+            return customDelimiters.ToArray();
         }
 
         return defaultDelimiters;
     }
 
-    private   static string[] SplitNumbers(string numbers, string[] delimiters)
+    private static List<string> ExtractCustomDelimiters(string customDelimiterString)
     {
-        return Regex.Split(numbers, string.Join("|", delimiters));
+        List<string> customDelimiters = new List<string>();
+        if (customDelimiterString.StartsWith("[") && customDelimiterString.EndsWith("]"))
+        {
+            // Multiple custom delimiters
+            customDelimiters.AddRange(
+                customDelimiterString.Split(new[] { "][" }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(d => d.Trim('[', ']'))
+            );
+        }
+        else
+        {
+            // Single custom delimiter
+            customDelimiters.Add(customDelimiterString);
+        }
+
+        return customDelimiters;
     }
 
-    private static List<int> ParseNumbers(string[] numberStrings)
+    public static string[] SplitNumbers(string numbers, string[] delimiters)
+    {
+        return Regex.Split(numbers, string.Join("|", delimiters.Select(Regex.Escape)));
+    }
+
+    public static List<int> ParseNumbers(string[] numberStrings)
     {
         List<int> parsedNumbers = new List<int>();
 
@@ -53,7 +74,6 @@ public static class StringCalculator
                 parsedNumbers.Add(num);
             }
         }
-        
 
         return parsedNumbers;
     }
