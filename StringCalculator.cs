@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 
 public static class StringCalculator
 {
-    public int static num = 0;
     public static int Add(string numbers)
     {
         if (string.IsNullOrEmpty(numbers))
@@ -79,7 +78,7 @@ public static class StringCalculator
         return parsedNumbers;
     }
 
-    private static void ValidateNumber(int num)
+    private static void ValidateNumber(int num,out int num)
     {
         if (num < 0)
         {
