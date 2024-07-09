@@ -94,7 +94,7 @@ public static class StringCalculator
         }
          else
          {
-             return num;
+           
          }
    }
 }
