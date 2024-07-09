@@ -83,7 +83,7 @@ public static class StringCalculator
     {
         if (num < 0)
         {
-            throw new ArgumentException($"negatives not allowed: {num1}");
+            throw new ArgumentException($"negatives not allowed: {num}");
         }
      }
      private static int IsNumbergreterthenThousand(int num)
