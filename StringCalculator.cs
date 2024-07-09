@@ -86,6 +86,7 @@ public static class StringCalculator
         }
         else if (num > 1000)
         {
+             num = 0;
             // Numbers greater than 1000 are ignored
         }
     }
